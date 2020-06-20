@@ -84,7 +84,7 @@ module.exports = {
   },
   updateUser: (req, res) => {
     const id = req.params.id;
-    User.findById()
+    User.findById(id)
       .then((user) => {
         if (!user) {
           return res
