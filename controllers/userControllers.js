@@ -1,8 +1,9 @@
-const bcrypt = require('bcrypjs');
+const User = require('../models/User')
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   getAllUsers: (req, res) => {
-    User.find
+    User.find()
       .then((users) => {
         return res.status(200).json(users);
       })
@@ -26,6 +27,8 @@ module.exports = {
       );
   },
   register: (req, res) => {
+    console.log("EHH!!");
+    console.log(req.body);
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
       return res.json({ message: 'Fields must be completed' });
